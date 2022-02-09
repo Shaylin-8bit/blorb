@@ -1,23 +1,52 @@
 import { hasRank } from '../../utility/hasRank.js';
 
 const name = 'role';
-const publicRoles = [
-  'Jomsviking',
-  'Varangian',
-  'Berserker',
-  'Archer',
-  'Swordsman',
-  'Calvary',
-  'Mage',
-  'Blacksmith',
-  'Fisherman',
-  'Skald',
-  'Farmer',
-  'Woodsman',
-  'Shipmaster',
-  'Skald',
-  'Ping',
-];
+
+const publicRoles = {
+  facRoles: [
+    'Jomsviking',
+    'Varangian',
+    'Berserker',
+  ],
+
+  warRoles: [
+    'Archer',
+    'Swordsman',
+    'Calvary',
+    'Mage',
+  ],
+
+  occRoles: [
+    'Blacksmith',
+    'Fisherman',
+    'Skald',
+    'Farmer',
+    'Woodsman',
+    'Shipmaster',
+  ],
+
+  utiRoles: [
+    'Skald',
+    'Ping',
+  ],
+};
+
+const setRole(msg, lst, roleName) {
+  if (!hasRank(msg.member, [roleName])) {
+    console.log('here');
+    var role = msg.guild.roles.cache.find(role => role.name === roleName);
+    msg.member.roles.add(role);
+
+    for (let x in publicRoles[lst]) {
+      if (hasRank(msg.member, [publicRoles[lst][x]])) {
+        var role = msg.guild.roles.cache.find(role => role.name === roleName);
+        msg.member.roles.remove(role);
+      }
+    }
+  } else {
+    console.log('already has role');
+  }
+}
 
 const run = (msg) => {
   const roleName = msg.content.split(' ')[1];
@@ -26,12 +55,14 @@ const run = (msg) => {
     return;
   } 
 
-  if (!publicRoles.includes(roleName)) {
-    msg.channel.send('This role either does not exist, or has limited access.');
-    return;
+  for (let att in publicRoles) {
+    if (publicRoles[att].includes(roleName)) {
+      console.log(att);
+      break;
+    }
   }
 
-  if (hasRank(msg.member, [roleName])) {
+  /*if (hasRank(msg.member, [roleName])) {
     msg.channel.send('Removing');
     var role = msg.guild.roles.cache.find(role => role.name === roleName);
     msg.member.roles.remove(role);
@@ -39,7 +70,7 @@ const run = (msg) => {
     msg.channel.send('Adding');
     var role = msg.guild.roles.cache.find(role => role.name === roleName);
     msg.member.roles.add(role);
-  }
+  }*/
 }
 
 const role = {

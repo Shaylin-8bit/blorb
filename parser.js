@@ -4,7 +4,6 @@ import { permissions } from './utility/permissions.js';
 const attemptRun = (msg, client, command) => {
   const commandPerms = permissions(msg.member);
   if (commandPerms.includes(command.name)) {
-    msg.channel.send(`Running ${command.name}!`);
     command.run(msg, client);
   } else {
     msg.channel.send('Missing permissions!');
