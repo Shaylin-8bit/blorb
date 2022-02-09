@@ -1,10 +1,8 @@
 const access = {
   'Grand Overseer': [],
   'Overseer': [],
-  '@everyone': ['ping', 'help'],
+  '@everyone': ['ping', 'help', 'role'],
 }
-
-
 
 export function permissions (member) {
   let result = [];

@@ -12,10 +12,10 @@ const attemptRun = (msg, client, command) => {
 }
 
 export function parser(msg, client) {
-  const commandName = msg.content.substring(2);
+  const commandName = msg.content.split(' ')[0].substring(2);
   if (commands[commandName]) {
     attemptRun(msg, client, commands[commandName]);
   } else {
-    msg.channel.send(`${commandName} if not a valid command!`);
+    msg.channel.send(`${commandName} is not a valid command!`);
   }
 }
