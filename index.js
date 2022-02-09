@@ -9,7 +9,6 @@ client.on('ready', () => {
 client.on('messageCreate', message => {
   if (message.content === 'b!ping') {
     message.channel.send('Pong!');
-    
   }
 });
 
