@@ -1,36 +1,8 @@
 import { hasRank } from '../../utility/hasRank.js';
+import { publicRoles } from '../../globals/roles.js';
 
 const name = 'role';
 const info = 'Toggle roles by passing one as an arg';
-
-const publicRoles = {
-  facRoles: [
-    'Jomsviking',
-    'Varangian',
-    'Berserker',
-  ],
-
-  warRoles: [
-    'Archer',
-    'Swordsman',
-    'Calvary',
-    'Mage',
-  ],
-
-  occRoles: [
-    'Blacksmith',
-    'Fisherman',
-    'Skald',
-    'Farmer',
-    'Woodsman',
-    'Shipmaster',
-  ],
-
-  utiRoles: [
-    'Skald',
-    'Ping',
-  ],
-};
 
 const setRole = (msg, lst, roleName) => {
   if (lst !== 'utiRoles') {
