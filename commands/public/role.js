@@ -31,22 +31,38 @@ const publicRoles = {
   ],
 };
 
-const setRole(msg, lst, roleName) {
-  if (!hasRank(msg.member, [roleName])) {
-    console.log('here');
-    var role = msg.guild.roles.cache.find(role => role.name === roleName);
+const setRole = (msg, lst, roleName) => {
+  if (lst !== 'utiRoles') {
+    msg.channel.send(`Setting your ${
+      {
+        'facRoles': 'faction', 'warRoles': 'warrior class', 'occRoles': 'occupation'
+      }[lst]
+    } to ${roleName}!`)
+    
+    let role = msg.guild.roles.cache.find(role => role.name === roleName);
     msg.member.roles.add(role);
 
-    for (let x in publicRoles[lst]) {
-      if (hasRank(msg.member, [publicRoles[lst][x]])) {
-        var role = msg.guild.roles.cache.find(role => role.name === roleName);
+    for (let x of publicRoles[lst]) {
+      if (x !== roleName && hasRank(msg.member, [x])) {
+        role = msg.guild.roles.cache.find(role => role.name === x);
         msg.member.roles.remove(role);
       }
     }
+
   } else {
-    console.log('already has role');
+    if (!hasRank(msg.member, [roleName])) {
+      msg.channel.send(`Adding ${roleName}!`)
+      const role = msg.guild.roles.cache.find(role => role.name === roleName);
+      msg.member.roles.add(role);
+    } else {
+      msg.channel.send(`Removing ${roleName}!`);
+      const role = msg.guild.roles.cache.find(role => role.name === roleName);
+      msg.member.roles.remove(role);
+    }
+  
   }
 }
+
 
 const run = (msg) => {
   const roleName = msg.content.split(' ')[1];
@@ -57,20 +73,12 @@ const run = (msg) => {
 
   for (let att in publicRoles) {
     if (publicRoles[att].includes(roleName)) {
-      console.log(att);
-      break;
+      setRole(msg, att, roleName);
+      return;
     }
   }
 
-  /*if (hasRank(msg.member, [roleName])) {
-    msg.channel.send('Removing');
-    var role = msg.guild.roles.cache.find(role => role.name === roleName);
-    msg.member.roles.remove(role);
-  } else {
-    msg.channel.send('Adding');
-    var role = msg.guild.roles.cache.find(role => role.name === roleName);
-    msg.member.roles.add(role);
-  }*/
+  msg.channel.send(`"${roleName}" is either not a role or has restricted access... Perhaps check spelling and capitilization?`);
 }
 
 const role = {
