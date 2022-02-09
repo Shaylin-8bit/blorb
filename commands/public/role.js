@@ -1,6 +1,7 @@
 import { hasRank } from '../../utility/hasRank.js';
 
 const name = 'role';
+const info = 'Toggle roles by passing one as an arg';
 
 const publicRoles = {
   facRoles: [
@@ -84,6 +85,7 @@ const run = (msg) => {
 const role = {
   run: run,
   name: name,
+  info: info,
 }
 
 export { role };
