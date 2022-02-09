@@ -1,6 +1,7 @@
 const permissions = {
-  'Grand Overseer': [],
-  'Overseer': [],
+  'Grand Overseer': ['crown'],
+  'Overseer': ['crown'],
+  'King': ['jarl', 'hird', 'chieftan'],
   '@everyone': ['ping', 'help', 'role'],
 }
 
