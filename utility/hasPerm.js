@@ -6,7 +6,6 @@ export function hasPerm (member, perm) {
     (role) => {
       if (permissions[role.name]) {
         if (permissions[role.name].includes(perm)) {
-          console.log('here2');
           result = true;
         }
       }
