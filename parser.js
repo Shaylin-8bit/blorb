@@ -1,8 +1,8 @@
-import { commands } from './commands/commands.js';
-import { permissions } from './utility/permissions.js';
+import { commands } from './globals/commands.js';
+import { hasPerm } from './utility/hasPerm.js';
 
 const attemptRun = (msg, client, command) => {
-  const commandPerms = permissions(msg.member);
+  const commandPerms = hasPerm(msg.member);
   if (commandPerms.includes(command.name)) {
     command.run(msg, client);
   } else {

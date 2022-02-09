@@ -1,4 +1,4 @@
-import { commands } from '../commands.js';
+import { commands } from '../../globals/commands.js';
 
 const name = 'help'
 const info = 'Displays commands info';
