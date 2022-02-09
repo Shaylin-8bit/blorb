@@ -11,7 +11,7 @@ export function parser(msg, client) {
       break;
     
     case 'ping':
-      ping(msg);
+      ping.run(msg);
       break;
 
     default:

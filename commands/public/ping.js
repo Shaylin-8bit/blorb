@@ -1,4 +1,6 @@
-export async function ping(msg) {
+const name = 'ping';
+
+async function run (msg) {
   const response = await msg.channel.send('Pinging!');
   response.edit(
     `Pong! I took ${
@@ -6,3 +8,10 @@ export async function ping(msg) {
     }ms to respond 🏓`
   );
 }
+
+const ping = {
+  name: name,
+  run: run,
+}
+
+export {ping};
