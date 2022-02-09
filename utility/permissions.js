@@ -4,6 +4,8 @@ const access = {
   '@everyone': ['ping', 'help'],
 }
 
+
+
 export function permissions (member) {
   let result = [];
   member.roles.cache.forEach(

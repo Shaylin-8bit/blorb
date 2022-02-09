@@ -1,9 +1,17 @@
 import { ping } from './commands/public/ping.js';
 import { permissions } from './utility/permissions.js';
 
-export function parser(msg, client) {
+const attemptRun = (msg, client, command) => {
   const commands = permissions(msg.member);
-  console.log(commands);
+  if (commands.includes(command.name)) {
+    msg.channel.send(`Running ${command.name}!`);
+    command.run(msg, client);
+  } else {
+    msg.channel.send('Missing permissions!');
+  }
+}
+
+export function parser(msg, client) {
   switch (msg.content.substring(2)) {
     case 'help':
       msg.channel.send('helping');
@@ -14,7 +22,7 @@ export function parser(msg, client) {
       break;
     
     case 'ping':
-      ping.run(msg);
+      attemptRun(msg, client, ping);
       break;
 
     default:
