@@ -2,8 +2,7 @@ import { commands } from './globals/commands.js';
 import { hasPerm } from './utility/hasPerm.js';
 
 const attemptRun = (msg, client, command) => {
-  const commandPerms = hasPerm(msg.member);
-  if (commandPerms.includes(command.name)) {
+  if (hasPerm(msg.member, command.name)) {
     command.run(msg, client);
   } else {
     msg.channel.send('Missing permissions!');
