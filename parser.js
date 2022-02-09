@@ -1,4 +1,5 @@
 import { ping } from './commands/public/ping.js';
+import { help } from './commands/public/help.js';
 import { permissions } from './utility/permissions.js';
 
 const attemptRun = (msg, client, command) => {
@@ -14,7 +15,7 @@ const attemptRun = (msg, client, command) => {
 export function parser(msg, client) {
   switch (msg.content.substring(2)) {
     case 'help':
-      msg.channel.send('helping');
+      attemptRun(msg, client, help);
       break;
     
     case 'role':
