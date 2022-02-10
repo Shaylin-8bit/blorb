@@ -1,30 +1,39 @@
-const publicRoles = {
-  facRoles: [
-    'Jomsviking',
-    'Varangian',
-    'Berserker',
-  ],
+const roles = {
+  public: {
+    facRoles: [
+      'Jomsviking',
+      'Varangian',
+      'Berserker',
+    ],
 
-  warRoles: [
-    'Archer',
-    'Swordsman',
-    'Calvary',
-    'Mage',
-  ],
+    warRoles: [
+      'Archer',
+      'Swordsman',
+      'Calvary',
+      'Mage',
+    ],
 
-  occRoles: [
-    'Blacksmith',
-    'Fisherman',
-    'Skald',
-    'Farmer',
-    'Woodsman',
-    'Shipmaster',
-  ],
+    occRoles: [
+      'Blacksmith',
+      'Fisherman',
+      'Skald',
+      'Farmer',
+      'Woodsman',
+      'Shipmaster',
+    ],
 
-  utiRoles: [
-    'Skald',
-    'Ping',
-  ],
+    utiRoles: [
+      'Skald',
+      'Ping',
+    ],
+  },
+
+  political: [
+    'King',
+    'Jarl',
+    'Hird',
+    'Chieftan'
+  ]
 };
 
-export { publicRoles };
+export { roles };

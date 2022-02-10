@@ -1,4 +1,5 @@
 import { utility } from '../../globals/utility.js';
+import { roles } from '../../globals/roles.js';
 
 const name = 'crown';
 const info = 'Used to crown a new king or queen';
@@ -14,7 +15,7 @@ async function run(msg) {
   const members = await msg.guild.members.fetch();
   const role = msg.guild.roles.cache.find(role => role.name === 'King');
   
-  await utility.takeRole(msg, ['King','Jarl','Hird','Chieftan']);
+  await utility.takeRole(msg, roles.political);
   
   user.roles.add(role);
   msg.channel.send(`${user.user.username} has been crowned King!`);

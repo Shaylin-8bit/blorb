@@ -1,5 +1,5 @@
 import { utility } from '../../globals/utility.js';
-import { publicRoles } from '../../globals/roles.js';
+import { roles } from '../../globals/roles.js';
 
 const name = 'role';
 const info = 'Toggle roles by passing one as an arg';
@@ -15,7 +15,7 @@ const setRole = (msg, lst, roleName) => {
     let role = msg.guild.roles.cache.find(role => role.name === roleName);
     msg.member.roles.add(role);
 
-    for (let x of publicRoles[lst]) {
+    for (let x of roles.public[lst]) {
       if (x !== roleName && utility.hasRank(msg.member, [x])) {
         role = msg.guild.roles.cache.find(role => role.name === x);
         msg.member.roles.remove(role);
@@ -44,8 +44,8 @@ const run = (msg) => {
     return;
   } 
 
-  for (let att in publicRoles) {
-    if (publicRoles[att].includes(roleName)) {
+  for (let att in roles.public) {
+    if (roles.public[att].includes(roleName)) {
       setRole(msg, att, roleName);
       return;
     }
