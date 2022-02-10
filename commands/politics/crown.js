@@ -1,12 +1,10 @@
-import { hasRank } from '../../utility/hasRank.js';
-import { getTarg } from '../../utility/getTarg.js';
-import { takeRole } from '../../utility/takeRole.js';
+import { utility } from '../../globals/utility.js';
 
 const name = 'crown';
 const info = 'Used to crown a new king or queen';
 
 async function run(msg) {
-  const user = await getTarg(msg);
+  const user = await utility.getTarg(msg);
 
   if (!user) {
     msg.channel.send('Failed to get user');
@@ -15,9 +13,11 @@ async function run(msg) {
 
   const members = await msg.guild.members.fetch();
   const role = msg.guild.roles.cache.find(role => role.name === 'King');
-
-  await takeRole(msg, 'King');
-
+  
+  for (let roleName of ['King', 'Jarl', 'Hird', 'Chieftan']) {
+    await utility.takeRole(msg, roleName);
+  }
+  
   user.roles.add(role);
   msg.channel.send(`${user.user.username} has been crowned King!`);
 }

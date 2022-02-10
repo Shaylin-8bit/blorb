@@ -1,4 +1,4 @@
-import { hasRank } from '../../utility/hasRank.js';
+import { utility } from '../../globals/utility.js';
 import { publicRoles } from '../../globals/roles.js';
 
 const name = 'role';
@@ -16,14 +16,14 @@ const setRole = (msg, lst, roleName) => {
     msg.member.roles.add(role);
 
     for (let x of publicRoles[lst]) {
-      if (x !== roleName && hasRank(msg.member, [x])) {
+      if (x !== roleName && utility.hasRank(msg.member, [x])) {
         role = msg.guild.roles.cache.find(role => role.name === x);
         msg.member.roles.remove(role);
       }
     }
 
   } else {
-    if (!hasRank(msg.member, [roleName])) {
+    if (!utility.hasRank(msg.member, [roleName])) {
       msg.channel.send(`Adding ${roleName}!`)
       const role = msg.guild.roles.cache.find(role => role.name === roleName);
       msg.member.roles.add(role);
