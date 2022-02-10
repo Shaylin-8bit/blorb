@@ -1,13 +1,18 @@
 import { hasRank } from './hasRank.js';
 
-const takeRole = async (msg, roleName) => {
+const takeRole = async (msg, roleNames) => {
   const members = await msg.guild.members.fetch();
-  const role = msg.guild.roles.cache.find(role => role.name === roleName);
+  
   members.forEach(
     (member) => {
-      if (hasRank(member, [roleName])) {
+      roleNames.forEach(
+        (roleName) => {
+          const role = msg.guild.roles.cache.find(role => role.name === roleName);
+          if (hasRank(member, [roleName])) {
         member.roles.remove(role);
-      }
+          }
+        }
+      )
     }
   );
 }

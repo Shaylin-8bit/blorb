@@ -14,9 +14,7 @@ async function run(msg) {
   const members = await msg.guild.members.fetch();
   const role = msg.guild.roles.cache.find(role => role.name === 'King');
   
-  for (let roleName of ['King', 'Jarl', 'Hird', 'Chieftan']) {
-    await utility.takeRole(msg, roleName);
-  }
+  await utility.takeRole(msg, ['King','Jarl','Hird','Chieftan']);
   
   user.roles.add(role);
   msg.channel.send(`${user.user.username} has been crowned King!`);
