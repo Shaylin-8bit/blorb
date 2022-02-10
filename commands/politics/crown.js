@@ -1,12 +1,12 @@
 import { hasRank } from '../../utility/hasRank.js';
+import { getTarg } from '../../utility/getTarg.js';
 
 const name = 'crown';
 const info = 'Used to crown a new king or queen';
 
-async function run(msg, client) {
-  const userId = msg.content.split(' ')[1];
+async function run(msg) {
+  const user = await getTarg(msg);
   const members = await msg.guild.members.fetch();
-  const user = members.get(userId) || msg.mentions.first();
 
   const role = msg.guild.roles.cache.find(role => role.name === 'King');
 
