@@ -1,6 +1,7 @@
 import { utility } from '../../globals/utility.js';
 import { roles } from '../../globals/roles.js';
 
+const type = 'politics';
 const name = 'crown';
 const info = 'Used to crown a new king or queen';
 
@@ -25,6 +26,7 @@ const crown = {
   run: run,
   name: name,
   info: info,
+  type: type,
 };
 
 export {crown};

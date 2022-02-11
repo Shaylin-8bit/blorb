@@ -1,3 +1,4 @@
+const type = 'public';
 const name = 'ping';
 const info = 'Get bot latancy';
 
@@ -14,6 +15,7 @@ const ping = {
   run: run,
   name: name,
   info: info,
+  type: type,
 }
 
 export {ping};

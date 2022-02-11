@@ -1,6 +1,7 @@
 import { utility } from '../../globals/utility.js';
 import { roles } from '../../globals/roles.js';
 
+const type = 'public';
 const name = 'role';
 const info = 'Toggle roles by passing one as an arg';
 
@@ -58,6 +59,7 @@ const role = {
   run: run,
   name: name,
   info: info,
+  type: type,
 }
 
 export { role };

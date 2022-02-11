@@ -1,5 +1,6 @@
 import { commands } from '../../globals/commands.js';
 
+const type = 'public';
 const name = 'help'
 const info = 'Displays commands info';
 
@@ -17,6 +18,7 @@ const help = {
   run: run,
   name: name,
   info: info,
+  type: type,
 }
 
 export {help};
