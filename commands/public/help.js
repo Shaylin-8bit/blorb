@@ -1,4 +1,4 @@
-import { getCmds } from '../../globals/commands.js';
+import { getCmds } from '../../utility/getCmds.js';
 
 const type = 'public';
 const name = 'help'

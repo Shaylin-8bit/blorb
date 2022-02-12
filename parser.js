@@ -1,4 +1,4 @@
-import { getCmds } from './globals/commands.js';
+import { getCmds } from './utility/getCmds.js';
 import { hasPerm } from './utility/hasPerm.js';
 
 const attemptRun = (msg, client, command) => {
