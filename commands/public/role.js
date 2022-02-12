@@ -1,11 +1,12 @@
-import { utility } from '../../globals/utility.js';
+import { getUtil } from '../../utility/getUtil.js';
 import { roles } from '../../globals/roles.js';
 
 const type = 'public';
 const name = 'role';
 const info = 'Toggle roles by passing one as an arg';
 
-const setRole = (msg, lst, roleName) => {
+const setRole = async (msg, lst, roleName) => {
+  const utility = await getUtil();
   if (lst !== 'utiRoles') {
     msg.channel.send(`Setting your ${
       {
@@ -36,7 +37,6 @@ const setRole = (msg, lst, roleName) => {
   
   }
 }
-
 
 const run = (msg) => {
   const roleName = msg.content.split(' ')[1];

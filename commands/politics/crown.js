@@ -1,4 +1,4 @@
-import { utility } from '../../globals/utility.js';
+import { getUtil } from '../../utility/getUtil.js';
 import { roles } from '../../globals/roles.js';
 
 const type = 'politics';
@@ -6,6 +6,7 @@ const name = 'crown';
 const info = 'Used to crown a new king or queen';
 
 async function run(msg) {
+  const utility = await getUtil();
   const user = await utility.getTarg(msg);
 
   if (!user) {

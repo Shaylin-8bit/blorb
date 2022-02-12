@@ -1,10 +1,11 @@
-import { utility } from '../../globals/utility.js';
+import { getUtil } from '../../utility/getUtil.js';
 
 const type = 'politics';
 const name = 'jarl';
 const info = 'Used by the king to appoint his Jarl';
 
 async function run(msg, client) {
+  const utility = await getUtil();
   const user = await utility.getTarg(msg);
 
   if (!user) {
