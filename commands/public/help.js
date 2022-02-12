@@ -1,4 +1,4 @@
-import { commands } from '../../globals/commands.js';
+import { getCmds } from '../../globals/commands.js';
 
 const type = 'public';
 const name = 'help'
@@ -6,8 +6,8 @@ const info = 'Displays commands info';
 
 const get_array = (cmds) => {
   let arr = [];
-  for (let x in commands) {
-    arr.push(commands[x]);
+  for (let x in cmds) {
+    arr.push(cmds[x]);
   }
   arr.sort((a, b) => {
     return (a.type<b.type)? 1 : -1;
@@ -15,7 +15,8 @@ const get_array = (cmds) => {
   return arr;
 }
 
-const run = (msg) => {
+const run = async (msg) => {
+  const commands = await getCmds();
   const arr = get_array(commands);
   let type = arr[0].type;
   let reply = `**${type[0].toUpperCase() + type.substring(1)}**\n\`\`\`\n`;

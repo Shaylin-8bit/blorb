@@ -1,21 +1,22 @@
-import { help } from '../commands/public/help.js';
-import { ping } from '../commands/public/ping.js';
-import { role } from '../commands/public/role.js';
-import { perms } from '../commands/public/perms.js';
-import { crown } from '../commands/politics/crown.js';
-import { jarl } from '../commands/politics/jarl.js';
-import { hird } from '../commands/politics/hird.js';
-import { chieftan } from '../commands/politics/chieftan.js';
+import { readdirSync } from 'fs';
 
-const commands = {
-  'help': help,
-  'ping': ping,
-  'role': role,
-  'perms': perms,
-  'crown': crown,
-  'jarl': jarl,
-  'hird': hird,
-  'chieftan': chieftan,
+const getCmds = async () => {
+  const result = {};
+  const cmdDir = './commands';
+  const categories = readdirSync(cmdDir);
+  for (let cat of categories) {
+    const cmdFiles = readdirSync(`${cmdDir}/${cat}`).filter(
+      (name) => {
+        return name.slice(-3) === '.js';
+      }
+    );
+    for (let cmdFile of cmdFiles) {
+      const cmdName = cmdFile.slice(0, -3);
+      const cmd = await import(`.${cmdDir}/${cat}/${cmdFile}`);
+      result[cmdName] = cmd[cmdName];
+    }
+  }
+  return result;
 }
 
-export { commands };
+export { getCmds };
