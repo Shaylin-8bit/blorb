@@ -15,4 +15,8 @@ client.on('messageCreate', msg => {
   }
 });
 
+client.on('messageDelete', (msg) => {
+  log(msg, client, 'msgDel');
+});
+
 client.login(process.env.BOT_TOKEN);
