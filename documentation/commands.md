@@ -35,3 +35,6 @@ The function pointed to by the exports "run" will be passed two arguments.
 <li>
   A client object representing the bot.
 </li>
+
+<h2> Permissions </h2>
+In order for a command to be used, it must be given to at least one role in the permissions.js global file. 
