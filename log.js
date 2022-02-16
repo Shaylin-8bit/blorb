@@ -1,6 +1,8 @@
 import { getLogs } from './utility/getLogs.js';
+import { findLogChan } from './utility/findLogChan.js';
 
 export const log = async (ctx, client, type) => {
   const logs = await getLogs();
-  logs[type](ctx, client);
+  const channels = findLogChan(type);
+  logs[type](ctx, channels, client);
 }

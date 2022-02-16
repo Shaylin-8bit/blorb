@@ -1,8 +1,7 @@
-const boot = (ctx, client) => {
-  const channelName = 'bot-logs';
+const boot = (ctx, channelNames, client) => {
   client.channels.cache.forEach(
     (channel) => {
-      if (channel.name === channelName) {
+      if (channelNames.includes(channel.name)) {
         channel.send('Bot restarted...');
       }
     }

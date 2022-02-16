@@ -1,12 +1,13 @@
-const msgDel = (ctx) => {
-  const channelName = 'bot-logs';
-  const channel = ctx.guild.channels.cache.find(
+const msgDel = (ctx, channelNames) => {
+  const reply = `${ctx.author}'s message was deleted from ${ctx.channel}:\n${ctx.content}`;
+  
+  ctx.guild.channels.cache.forEach(
     (channel) => {
-      return channel.name === channelName;
+      if (channelNames.includes(channel.name)) {
+        channel.send(reply);
+      }
     }
   )
-  const reply = `${ctx.author}'s message was deleted from ${ctx.channel}:\n${ctx.content}`;
-  channel.send(reply);
 } 
 
 export { msgDel };
