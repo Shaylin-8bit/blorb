@@ -1,10 +1,9 @@
-import { permissions } from '../../globals/permissions.js';
-
 const name = 'perms';
 const type = 'public';
 const info = 'Get a list of your permissions';
 
-const run = (msg) => {
+const run = (msg, client) => {
+  const permissions = client.globals.permissions;
   let result = '**Permissions**```\n';
   msg.member.roles.cache.forEach(
     (role) => {

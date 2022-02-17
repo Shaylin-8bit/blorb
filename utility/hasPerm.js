@@ -1,6 +1,5 @@
-import { permissions } from '../globals/permissions.js';
-
-export function hasPerm (member, perm) {
+export function hasPerm (client, member, perm) {
+  const permissions = client.globals.permissions;
   let result = false;
   member.roles.cache.forEach(
     (role) => {

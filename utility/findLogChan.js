@@ -1,9 +1,7 @@
-import { channels } from '../globals/channels.js';
-
-const findLogChan = (logName) => {
+const findLogChan = (client, logName) => {
   let result = [];
-  for (let channel in channels.log) {
-    channels.log[channel].forEach(
+  for (let channel in client.channels.log) {
+    client.channels.log[channel].forEach(
       (log) => {
         if (log === logName) {
           result.push(channel);
