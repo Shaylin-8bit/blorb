@@ -7,11 +7,11 @@ const info = 'Toggle roles by passing one as an arg';
 const setRole = async (msg, lst, roleName, roles) => {
   const utility = await getUtil();
   if (lst !== 'utiRoles') {
-    msg.channel.send(`Setting your ${
+    msg.channel.send({content: `Setting your ${
       {
         'facRoles': 'faction', 'warRoles': 'warrior class', 'occRoles': 'occupation'
       }[lst]
-    } to ${roleName}!`)
+    } to ${roleName}!`})
     
     let role = msg.guild.roles.cache.find(role => role.name === roleName);
     msg.member.roles.add(role);
@@ -25,11 +25,11 @@ const setRole = async (msg, lst, roleName, roles) => {
 
   } else {
     if (!utility.hasRank(msg.member, [roleName])) {
-      msg.channel.send(`Adding ${roleName}!`)
+      msg.channel.send({content: `Adding ${roleName}!`})
       const role = msg.guild.roles.cache.find(role => role.name === roleName);
       msg.member.roles.add(role);
     } else {
-      msg.channel.send(`Removing ${roleName}!`);
+      msg.channel.send({content: `Removing ${roleName}!`});
       const role = msg.guild.roles.cache.find(role => role.name === roleName);
       msg.member.roles.remove(role);
     }
@@ -41,7 +41,7 @@ const run = (msg, client) => {
   const roles = client.globals.roles;
   const roleName = msg.content.split(' ')[1];
   if (!roleName) {
-    msg.channel.send('Buddy? You forgot to mention a role...');
+    msg.channel.send({content: 'Buddy? You forgot to mention a role...'});
     return;
   } 
 
@@ -52,7 +52,7 @@ const run = (msg, client) => {
     }
   }
 
-  msg.channel.send(`"${roleName}" is either not a role or has restricted access... Perhaps check spelling and capitilization?`);
+  msg.channel.send({content: `"${roleName}" is either not a role or has restricted access... Perhaps check spelling and capitilization?`});
 }
 
 const role = {

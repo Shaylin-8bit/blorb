@@ -3,7 +3,7 @@ const name = 'ping';
 const info = 'Get bot latancy';
 
 async function run (msg) {
-  const response = await msg.channel.send('Pinging!');
+  const response = await msg.channel.send({content: 'Pinging!'});
   response.edit(
     `Pong! I took ${
       response.createdTimestamp - msg.createdTimestamp

@@ -7,9 +7,9 @@ const run = (msg) => {
   const reply = msg.content.split(' ').slice(channel? 2 : 1).join(' ');
   if (reply) {
     if (channel) {
-      channel.send(reply);
+      channel.send({content: reply});
     } else {
-      msg.channel.send(reply);
+      msg.channel.send({content: reply});
     }
   }
   msg.delete();

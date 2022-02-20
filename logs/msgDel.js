@@ -4,7 +4,7 @@ const msgDel = (ctx, channelNames) => {
   ctx.guild.channels.cache.forEach(
     (channel) => {
       if (channelNames.includes(channel.name)) {
-        channel.send(reply);
+        channel.send({content: reply});
       }
     }
   )

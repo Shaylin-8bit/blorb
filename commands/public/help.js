@@ -30,7 +30,7 @@ const run = async (msg) => {
   reply += '```';
   
 
-  msg.channel.send(reply);
+  msg.channel.send({content: reply});
 }
 
 const help = {

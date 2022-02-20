@@ -9,7 +9,7 @@ async function run(msg, client) {
   const user = await utility.getTarg(msg);
 
   if (!user) {
-    msg.channel.send('Failed to get user');
+    msg.channel.send({content: 'Failed to get user'});
     return;
   } 
 
@@ -19,7 +19,7 @@ async function run(msg, client) {
   await utility.takeRole(msg, client.globals.roles.political);
   
   user.roles.add(role);
-  msg.channel.send(`${user.user.username} has been crowned King!`);
+  msg.channel.send({content: `${user.user.username} has been crowned King!`});
 }
 
 const crown = {

@@ -17,7 +17,7 @@ const run = (msg, client) => {
     }
   );
   result += '```';
-  msg.channel.send(result);
+  msg.channel.send({content: result});
 }
 
 const perms = {
