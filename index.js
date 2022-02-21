@@ -3,8 +3,6 @@ import { parser } from './parser.js';
 import { log } from './log.js';
 import { getGlobals } from './utility/getGlobals.js';
 
-import { client as dbclient } from './database/client.js';
-
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS] });
 
 client.globals = getGlobals();
