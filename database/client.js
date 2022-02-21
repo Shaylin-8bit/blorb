@@ -1,6 +1,6 @@
-import client from 'pg';
+import pg from 'pg';
 
-const client = new client.Client({
+const client = new pg.Client({
   connectionString : process.env.POSTGRES,
   ssl: {
     rejectUnauthorized: false
