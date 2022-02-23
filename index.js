@@ -2,9 +2,7 @@ import { Client, Intents } from 'discord.js';
 import { parser } from './parser.js';
 import { log } from './log.js';
 import { getGlobals } from './utility/getGlobals.js';
-import { new_server } from './database/new_server.js';
-
-new_server(5);
+import { client as database } from './database/client.js';
 
 process.on('unhandledRejection', (err) => {
   console.log(err);
@@ -13,6 +11,7 @@ process.on('unhandledRejection', (err) => {
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS] });
 
 client.globals = getGlobals();
+client.database = database;
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
