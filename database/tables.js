@@ -1,15 +1,9 @@
 const tables = {
-  'users': {
+  'globals': {
     columns: [
-      'name varchar(255)',
-      'id int'
-    ]
-  },
-
-  'roles': {
-    columns: [
-      'name varchar(255)',
-      'permissions varchar(255)'
+      'channels TEXT',
+      'permissions TEXT',
+      'roles TEXT'
     ]
   }
 };
