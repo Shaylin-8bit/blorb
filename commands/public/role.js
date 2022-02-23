@@ -6,12 +6,8 @@ const info = 'Toggle roles by passing one as an arg';
 
 const setRole = async (msg, lst, roleName, roles) => {
   const utility = await getUtil();
-  if (lst !== 'utiRoles') {
-    msg.channel.send({content: `Setting your ${
-      {
-        'facRoles': 'faction', 'warRoles': 'warrior class', 'occRoles': 'occupation'
-      }[lst]
-    } to ${roleName}!`})
+  if (lst !== 'utility') {
+    msg.channel.send({content: `Setting your ${lst} to ${roleName}!`})
     
     let role = msg.guild.roles.cache.find(role => role.name === roleName);
     msg.member.roles.add(role);
