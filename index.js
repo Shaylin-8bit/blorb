@@ -2,6 +2,9 @@ import { Client, Intents } from 'discord.js';
 import { parser } from './parser.js';
 import { log } from './log.js';
 import { getGlobals } from './utility/getGlobals.js';
+import { new_server } from './database/new_server.js';
+
+new_server(5);
 
 process.on('unhandledRejection', (err) => {
   console.log(err);
@@ -26,4 +29,4 @@ client.on('messageDelete', (msg) => {
   log(msg, client, 'msgDel');
 });
 
-client.login(process.env.BOT_TOKEN);
+//client.login(process.env.BOT_TOKEN);

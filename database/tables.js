@@ -1,9 +1,7 @@
 const tables = {
   'globals': {
     columns: [
-      'channels TEXT',
-      'permissions TEXT',
-      'roles TEXT'
+      'name TEXT content TEXT'
     ]
   }
 };
