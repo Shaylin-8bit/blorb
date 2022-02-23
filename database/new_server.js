@@ -18,7 +18,7 @@ const seed = async (id) => {
 
 const new_server = (id) => {
   client.connect()
-  .then(() => seed(5))
+  .then(() => seed(id))
   .catch(e => console.log);
 }
 
