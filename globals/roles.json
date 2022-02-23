@@ -1,19 +1,19 @@
 {
   "public": {
-    "facRoles": [
+    "faction": [
       "Jomsviking",
       "Varangian",
       "Berserker"
     ],
 
-    "warRoles": [
+    "warrior class": [
       "Archer",
       "Swordsman",
       "Calvary",
       "Mage"
     ],
 
-    "occRoles": [
+    "occupation": [
       "Blacksmith",
       "Fisherman",
       "Skald",
@@ -22,7 +22,7 @@
       "Shipmaster"
     ],
 
-    "utiRoles": [
+    "utility": [
       "Skald",
       "Ping"
     ]
