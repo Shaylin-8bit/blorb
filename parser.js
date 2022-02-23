@@ -2,7 +2,7 @@ import { getCmds } from './utility/getCmds.js';
 import { hasPerm } from './utility/hasPerm.js';
 
 const attemptRun = (msg, client, command) => {
-  if (hasPerm(client, msg.member, command.name)) {
+  if (hasPerm(client, msg.member, command.name) || msg.guild.ownerId === msg.author.id) {
     command.run(msg, client);
   } else {
     msg.channel.send({content: 'Missing permissions!'});
