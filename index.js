@@ -10,8 +10,7 @@ process.on('unhandledRejection', (err) => {
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS] });
 
-client.globals = getGlobals();
-client.globals2 = get_globals();
+client.globals = await get_globals();
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -28,4 +27,4 @@ client.on('messageDelete', (msg) => {
   log(msg, client, 'msgDel');
 });
 
-//client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
