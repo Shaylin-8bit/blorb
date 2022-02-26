@@ -3,6 +3,7 @@ import { getUtil } from '../../utility/getUtil.js';
 const type = 'public';
 const name = 'role';
 const info = 'Toggle roles by passing one as an arg';
+const cache = false;
 
 const setRole = async (msg, lst, roleName, roles) => {
   const utility = await getUtil();
@@ -33,8 +34,8 @@ const setRole = async (msg, lst, roleName, roles) => {
   }
 }
 
-const run = (msg, client) => {
-  const roles = client.globals.roles;
+const run = (msg, client, globals) => {
+  const roles = globals.roles;
   const roleName = msg.content.split(' ')[1];
   if (!roleName) {
     msg.channel.send({content: 'Buddy? You forgot to mention a role...'});
@@ -52,10 +53,11 @@ const run = (msg, client) => {
 }
 
 const role = {
-  run: run,
   name: name,
-  info: info,
   type: type,
+  info: info,
+  run: run,
+  cache: cache,
 }
 
 export { role };

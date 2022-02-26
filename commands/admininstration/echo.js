@@ -1,6 +1,7 @@
 const name = 'echo';
 const type = 'admin';
 const info = 'Echos a message with an optional channel arg';
+const cache = false;
 
 const run = (msg) => {
   const channel = msg.mentions.channels.first()
@@ -17,9 +18,10 @@ const run = (msg) => {
 
 const echo = {
   name: name,
-  info: info,
   type: type,
+  info: info,
   run: run,
+  cache: cache,
 }
 
 export { echo };

@@ -1,10 +1,11 @@
 const name = 'perms';
 const type = 'public';
 const info = 'Get a list of your permissions';
+const cache = false;
 
-const run = (msg, client) => {
-  const permissions = client.globals.permissions;
-  let result = '**Permissions**```\n';
+const run = (msg, client, globals) => {
+  const permissions = globals.permissions;
+  let result = '';
   msg.member.roles.cache.forEach(
     (role) => {
       if (permissions[role.name]) {
@@ -16,8 +17,8 @@ const run = (msg, client) => {
       }
     }
   );
-  result += '```';
-  msg.channel.send({content: result});
+  const ends = ['**Permissions**```\n', '```'];
+  msg.channel.send({content: result ? ends.join(result) : 'Your permissions have not been set up.'});
 }
 
 const perms = {
@@ -25,6 +26,7 @@ const perms = {
   type: type,
   info: info,
   run: run,
+  cache: cache,
 };
 
 export { perms };
