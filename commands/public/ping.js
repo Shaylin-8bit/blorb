@@ -1,6 +1,7 @@
 const type = 'public';
 const name = 'ping';
 const info = 'Get bot latancy';
+const cache = false;
 
 async function run (msg) {
   const response = await msg.channel.send({content: 'Pinging!'});
@@ -12,10 +13,11 @@ async function run (msg) {
 }
 
 const ping = {
-  run: run,
   name: name,
-  info: info,
   type: type,
+  info: info,
+  run: run,
+  cache: cache,
 }
 
 export {ping};

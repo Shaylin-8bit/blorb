@@ -2,13 +2,20 @@ import { getCmds } from './utility/getCmds.js';
 import { hasPerm } from './utility/hasPerm.js';
 import { init } from './setup/init.js';
 
-const attemptRun = (msg, client, command) => {
+
+
+const attemptRun = async (msg, client, command) => {
   if (hasPerm(client, msg.member, command.name) || msg.guild.ownerId === msg.author.id) {
-    command.run(msg, client);
+    await command.run(msg, client, client.globals.vals);
+    if (command.cache) {
+      await client.globals.cache(msg.guild.id);
+    }
   } else {
     msg.channel.send({content: 'Missing permissions!'});
   }
 }
+
+
 
 export async function parser(msg, client) {
   if (msg.content === 'b!init') {

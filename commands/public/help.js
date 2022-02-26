@@ -3,6 +3,7 @@ import { getCmds } from '../../utility/getCmds.js';
 const type = 'public';
 const name = 'help'
 const info = 'Displays commands info';
+const cache = false;
 
 const get_array = (cmds) => {
   let arr = [];
@@ -34,10 +35,11 @@ const run = async (msg) => {
 }
 
 const help = {
-  run: run,
   name: name,
-  info: info,
   type: type,
+  info: info,
+  run: run,
+  cache: cache,
 }
 
 export {help};

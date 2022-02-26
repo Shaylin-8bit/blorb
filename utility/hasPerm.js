@@ -1,5 +1,4 @@
 export function hasPerm (client, member, perm) {
-  console.log(client.globals.vals);
   const permissions = client.globals.vals.permissions;
   let result = false;
   member.roles.cache.forEach(

@@ -9,7 +9,17 @@ const init = async (msg, client) => {
     },
 
     roles: {
-      
+      public: [
+        
+      ],
+
+      private: [
+        
+      ],
+
+      admininstrator: [
+        
+      ]
     }
   }
   
