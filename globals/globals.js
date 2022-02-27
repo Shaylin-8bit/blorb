@@ -14,7 +14,7 @@ class Globals {
     };
     
     this.cache = async (id) => {
-      await this.database.set_globals(id, JSON.strigify(this.vals));
+      await this.database.set_globals(id, JSON.stringify(this.vals));
     }
 
     this.server = async(id) => this.database.server_exists(id);
