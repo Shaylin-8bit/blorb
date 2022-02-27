@@ -7,6 +7,12 @@ const run = (msg, client, globals) => {
   const args = msg.content.split(' ').filter(
     (arg) => arg !== ''
   );
+
+  if (args.length < 3) {
+    msg.channel.send({content: 'Missing arguments!'});
+    return;
+  }
+  
   const category = args[1].toLowerCase();
   const role = args[2];
 
