@@ -13,16 +13,22 @@ const run = (msg, client, globals) => {
     return;
   }
   
-  const category = args[1].toLowerCase();
+  const categoryName = args[1].toLowerCase();
+  let category = globals.roles.public[categoryName];
   const role = args[2];
 
-  if (globals.roles.public[category]) {
-    globals.roles.public[category].push(args[2]);
+  if (category) {
+    if (category.includes(role)) {
+      msg.channel.send({content: `${role} already exists!`});
+      return;
+    } else {
+      category.push(role);
+    }
   } else {
-    globals.roles.public[category] = [role];
+    globals.roles.public[categoryName] = [role];
   }
   
-  msg.channel.send({content: `Created ${role} under ${category}.`});
+  msg.channel.send({content: `Created ${role} under ${categoryName}.`});
 }
 
 const addpubrole = {
