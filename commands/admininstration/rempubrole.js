@@ -1,39 +1,37 @@
 const name = 'rempubrole';
 const type = 'admin';
 const cache = true;
-const info = 'Remove a role from public roles. `category name`';
+const info = 'Remove a role from public roles.';
 
 const run = (msg, client, globals) => {
   const args = msg.content.split(' ').filter(
     (arg) => arg !== ''
   );
 
-  if (args.length < 3) {
+  if (args.length < 2) {
     msg.channel.send({content: 'Missing arguments!'});
     return;
   }
+
+  const role = args[1];
   
-  const category = globals.roles.public[args[1].toLowerCase()];
-  const role = args[2];
-
-  if (category) {
-    if (category.includes(role)) {
-      category.splice(category.findIndex(
-        (r) => r === role
-      ), 1);
-      msg.channel.send({content: `Deleted ${role} from ${args[1].toLowerCase()}`});
-
-      if (!category.length) {
-        delete globals.roles.public[args[1].toLowerCase()];
+  for (let category in globals.roles.public) {
+    if (globals.roles.public[category].includes(role)) {
+      globals.roles.public[category].splice(
+        globals.roles.public[category].indexOf(
+          (r) => r === role
+        ),
+        1
+      );
+      msg.channel.send({content: `Removed ${role} from ${category}`});
+      if (globals.roles.public[category].length) {
+        delete globals.roles.public[category];
       }
-      
-    } else {
-      msg.channel.send({content: `${role} does not exist in ${args[1].toLowerCase()}`});
-    } 
-  } else {
-    msg.channel.send({content: `${category} category does not exist!`});
+      return;
+    }
   }
-}
+  msg.channel.send({content: `${role} does not exist`});
+};
 
 
 const rempubrole = {
