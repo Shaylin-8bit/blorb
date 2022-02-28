@@ -16,14 +16,19 @@ const run = (msg, client, globals) => {
   const categoryName = args[1].toLowerCase();
   let category = globals.roles.public[categoryName];
   const role = args[2];
+  let roles = [];
+
+  for (let cat in globals.roles.public) {
+    roles = roles.concat(globals.roles.public[cat]);
+  }
+
+  if (roles.includes(role)) {
+    msg.channel.send({content: `${role} already exists in public roles!`});
+    return;
+  }
 
   if (category) {
-    if (category.includes(role)) {
-      msg.channel.send({content: `${role} already exists!`});
-      return;
-    } else {
-      category.push(role);
-    }
+    category.push(role);
   } else {
     globals.roles.public[categoryName] = [role];
   }
